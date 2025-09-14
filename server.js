@@ -10,6 +10,12 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(cors());
+
+// Or for specific origins only (more secure)
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://www.logicjunior.com/']
+}));
 
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
